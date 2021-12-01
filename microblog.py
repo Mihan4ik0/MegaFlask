@@ -8,4 +8,4 @@ def make_shell_context():
 
 
 if __name__=='__main__':  # проверка запуска на зависимость
-    app.run()
+    app.run(debug=True)
