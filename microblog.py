@@ -7,5 +7,5 @@ def make_shell_context():
     return {'db': db, 'User': User, 'Post': Post}
 
 
-if __name__=='__main__':  # проверка запуска на зависимость
-    app.run(debug=True)
+if __name__ == '__main__':  # проверка запуска на зависимость
+    app.run()

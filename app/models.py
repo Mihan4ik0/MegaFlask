@@ -1,10 +1,10 @@
 from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import datetime
-from app import db
+from app import db, login, app
 from flask_login import UserMixin
-from app import login
 from hashlib import md5
-
+from time import time
+import jwt
 
 followers = db.Table('followers',  # Вспомогательная таблица
                      db.Column('follower_id', db.Integer, db.ForeignKey('user.id')),
@@ -24,11 +24,12 @@ class User(UserMixin, db.Model):  # таблица пользователей в
         'User', secondary=followers,  # secondary - таблица конфигураций
         primaryjoin=(followers.c.follower_id == id),  # условие связывающее с левой стороны(follower)
         secondaryjoin=(followers.c.followed_id == id),  # условие связывающее с правой стороны(followed)
-        backref=db.backref('followers', lazy='dynamic'), lazy='dynamic'  # backref определяет доступность с правой стороны, lazy определяет режим выполнения запроса
+        backref=db.backref('followers', lazy='dynamic'), lazy='dynamic'
+        # backref определяет доступность с правой стороны, lazy определяет режим выполнения запроса
     )
 
     def __repr__(self):
-        return '<User {}>'.format(self.username)
+        return '<Пользователь {}>'.format(self.username)
 
     def set_password(self, password):  # хэширование пароля
         self.password_hash = generate_password_hash(password)
@@ -37,7 +38,8 @@ class User(UserMixin, db.Model):  # таблица пользователей в
         return check_password_hash(self.password_hash, password)
 
     def avatar(self, size):  # изображение аватара
-        digest = md5(self.email.lower().encode('utf-8')).hexdigest()   # конвертирование почты в нижний регистр, далее в 16-ю строку
+        digest = md5(self.email.lower().encode(
+            'utf-8')).hexdigest()  # конвертирование почты в нижний регистр, далее в 16-ю строку
         return 'https://www.gravatar.com/avatar/{}?d=identicon&s={}'.format(digest, size)
 
     def follow(self, user):  # метод подписки
@@ -56,7 +58,21 @@ class User(UserMixin, db.Model):  # таблица пользователей в
             followers, (followers.c.followed_id == Post.user_id)).filter(
             followers.c.follower_id == self.id)  # фильтрация, чтобы вывести только тех за кем следит пользователь
         own = Post.query.filter_by(user_id=self.id)  # вывод своих постов
-        return followed.union(own).order_by(Post.timestamp.desc())  # объединение 'followed' и 'own', а после сортировка по времени публикации
+        return followed.union(own).order_by(
+            Post.timestamp.desc())  # объединение 'followed' и 'own', а после сортировка по времени публикации
+
+    def get_reset_password_token(self, expires_in=600):  # генерация токена
+        return jwt.encode(
+            {'reset password': self.id, 'exp': time() + expires_in},
+            app.config['SECRET_KEY'], algorithm='HS256').decode('utf-8')  # токен в строку
+
+    @staticmethod  # обозначение статическим методом
+    def verify_reset_password_token(token):  # функция декодирование токена
+        try:
+            id = jwt.decode(token, app.config['SECRET_KEY'], algorithms=['HS256'])['reset_password']
+        except:
+            return
+        return User.query.get(id)
 
 
 class Post(db.Model):  # таблица постов в БД
@@ -66,7 +82,7 @@ class Post(db.Model):  # таблица постов в БД
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
     def __repr__(self):
-        return '<Post {}>'.format(self.body)
+        return '<Пост {}>'.format(self.body)
 
 
 @login.user_loader  # регистрирование пользовательского загрузчика

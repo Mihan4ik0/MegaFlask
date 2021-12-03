@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>Hi, {{ current_user.username }}!</h1>
+    <h1>Привет, {{ current_user.username }}!</h1>
     {% if form %}
     <form action="" method="post">
         {{ form.hidden_tag() }}
@@ -19,9 +19,9 @@
         {% include '_post.html' %}
     {% endfor %}
     {% if prev_url %}
-    <a href="{{ prev_url }}">Newer posts</a>
+    <a href="{{ prev_url }}">Новые посты</a>
     {% endif %}
     {% if next_url %}
-    <a href="{{ next_url }}">Older posts</a>
+    <a href="{{ next_url }}">Старые посты</a>
     {% endif %}
 {% endblock %}
