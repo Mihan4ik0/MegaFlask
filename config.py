@@ -17,3 +17,4 @@ class Config(object):
     MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
     ADMINS = ['miha23112003@gmail.com']
     POSTS_PER_PAGE = 25  # элементов на странице
+    ELASTICSEARCH_URL = os.environ.get('ELASTICSEARCH_URL')

@@ -1,4 +1,48 @@
-2021-12-07 16:18:31,493 ERROR: Exception on /index [GET] [in C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask\app.py:1457]
+2021-12-07 17:47:07,087 ERROR: Exception on /index [POST] [in C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask\app.py:1457]
+Traceback (most recent call last):
+  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\urllib3\connection.py", line 174, in _new_conn
+    conn = connection.create_connection(
+  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\urllib3\util\connection.py", line 96, in create_connection
+    raise err
+  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\urllib3\util\connection.py", line 86, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\elasticsearch\connection\http_urllib3.py", line 251, in perform_request
+    response = self.pool.urlopen(
+  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\urllib3\connectionpool.py", line 755, in urlopen
+    retries = retries.increment(
+  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\urllib3\util\retry.py", line 507, in increment
+    raise six.reraise(type(error), error, _stacktrace)
+  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\urllib3\packages\six.py", line 770, in reraise
+    raise value
+  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\urllib3\connectionpool.py", line 699, in urlopen
+    httplib_response = self._make_request(
+  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\urllib3\connectionpool.py", line 394, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\urllib3\connection.py", line 239, in request
+    super(HTTPConnection, self).request(method, url, body=body, headers=headers)
+  File "C:\Users\Миша\AppData\Local\Programs\Python\Python39\lib\http\client.py", line 1257, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "C:\Users\Миша\AppData\Local\Programs\Python\Python39\lib\http\client.py", line 1303, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "C:\Users\Миша\AppData\Local\Programs\Python\Python39\lib\http\client.py", line 1252, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "C:\Users\Миша\AppData\Local\Programs\Python\Python39\lib\http\client.py", line 1012, in _send_output
+    self.send(msg)
+  File "C:\Users\Миша\AppData\Local\Programs\Python\Python39\lib\http\client.py", line 952, in send
+    self.connect()
+  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\urllib3\connection.py", line 205, in connect
+    conn = self._new_conn()
+  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\urllib3\connection.py", line 186, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x000001C467A2DD60>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение
+
+During handling of the above exception, another exception occurred:
+
 Traceback (most recent call last):
   File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask\app.py", line 2073, in wsgi_app
     response = self.full_dispatch_request()
@@ -8,95 +52,31 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask\app.py", line 1502, in dispatch_request
     return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask_login\utils.py", line 271, in decorated_view
-    return current_app.login_manager.unauthorized()
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask_login\login_manager.py", line 174, in unauthorized
-    redirect_url = make_login_url(login_view, next_url=request.url)
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask_login\utils.py", line 120, in login_url
-    base = expand_login_view(login_view)
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask_login\utils.py", line 97, in expand_login_view
-    return url_for(login_view)
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask\helpers.py", line 338, in url_for
-    return appctx.app.handle_url_build_error(error, endpoint, values)
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask\helpers.py", line 325, in url_for
-    rv = url_adapter.build(
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\werkzeug\routing.py", line 2314, in build
-    raise BuildError(endpoint, values, method, self)
-werkzeug.routing.BuildError: Could not build url for endpoint 'login'. Did you mean 'auth.login' instead?
-2021-12-07 16:18:49,449 ERROR: Exception on /explore [GET] [in C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask\app.py:1457]
-Traceback (most recent call last):
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask\app.py", line 2073, in wsgi_app
-    response = self.full_dispatch_request()
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask\app.py", line 1518, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask\app.py", line 1516, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask\app.py", line 1502, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask_login\utils.py", line 271, in decorated_view
-    return current_app.login_manager.unauthorized()
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask_login\login_manager.py", line 174, in unauthorized
-    redirect_url = make_login_url(login_view, next_url=request.url)
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask_login\utils.py", line 120, in login_url
-    base = expand_login_view(login_view)
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask_login\utils.py", line 97, in expand_login_view
-    return url_for(login_view)
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask\helpers.py", line 338, in url_for
-    return appctx.app.handle_url_build_error(error, endpoint, values)
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask\helpers.py", line 325, in url_for
-    rv = url_adapter.build(
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\werkzeug\routing.py", line 2314, in build
-    raise BuildError(endpoint, values, method, self)
-werkzeug.routing.BuildError: Could not build url for endpoint 'login'. Did you mean 'auth.login' instead?
-2021-12-07 16:37:18,934 INFO: Microblog startup [in C:\Users\Миша\PycharmProjects\VIT 2.0\app\__init__.py:70]
-2021-12-07 16:37:21,012 ERROR: Exception on / [GET] [in C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask\app.py:1457]
-Traceback (most recent call last):
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask\app.py", line 2073, in wsgi_app
-    response = self.full_dispatch_request()
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask\app.py", line 1518, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask\app.py", line 1516, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask\app.py", line 1502, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask_login\utils.py", line 271, in decorated_view
-    return current_app.login_manager.unauthorized()
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask_login\login_manager.py", line 174, in unauthorized
-    redirect_url = make_login_url(login_view, next_url=request.url)
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask_login\utils.py", line 120, in login_url
-    base = expand_login_view(login_view)
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask_login\utils.py", line 97, in expand_login_view
-    return url_for(login_view)
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask\helpers.py", line 338, in url_for
-    return appctx.app.handle_url_build_error(error, endpoint, values)
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask\helpers.py", line 325, in url_for
-    rv = url_adapter.build(
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\werkzeug\routing.py", line 2314, in build
-    raise BuildError(endpoint, values, method, self)
-werkzeug.routing.BuildError: Could not build url for endpoint 'login'. Did you mean 'auth.login' instead?
-2021-12-07 16:39:40,171 ERROR: Exception on /user/Mihan [GET] [in C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask\app.py:1457]
-Traceback (most recent call last):
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask\app.py", line 2073, in wsgi_app
-    response = self.full_dispatch_request()
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask\app.py", line 1518, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask\app.py", line 1516, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask\app.py", line 1502, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask_login\utils.py", line 271, in decorated_view
-    return current_app.login_manager.unauthorized()
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask_login\login_manager.py", line 174, in unauthorized
-    redirect_url = make_login_url(login_view, next_url=request.url)
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask_login\utils.py", line 120, in login_url
-    base = expand_login_view(login_view)
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask_login\utils.py", line 97, in expand_login_view
-    return url_for(login_view)
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask\helpers.py", line 338, in url_for
-    return appctx.app.handle_url_build_error(error, endpoint, values)
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask\helpers.py", line 325, in url_for
-    rv = url_adapter.build(
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\werkzeug\routing.py", line 2314, in build
-    raise BuildError(endpoint, values, method, self)
-werkzeug.routing.BuildError: Could not build url for endpoint 'login'. Did you mean 'auth.login' instead?
-2021-12-07 16:41:03,850 INFO: Microblog startup [in C:\Users\Миша\PycharmProjects\VIT 2.0\app\__init__.py:70]
+  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Users\Миша\PycharmProjects\VIT 2.0\app\main\routes.py", line 18, in index
+    db.session.commit()
+  File "<string>", line 2, in commit
+  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\sqlalchemy\orm\session.py", line 1428, in commit
+    self._transaction.commit(_to_root=self.future)
+  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\sqlalchemy\orm\session.py", line 839, in commit
+    self.session.dispatch.after_commit(self.session)
+  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\sqlalchemy\event\attr.py", line 256, in __call__
+    fn(*args, **kw)
+  File "C:\Users\Миша\PycharmProjects\VIT 2.0\app\models.py", line 41, in after_commit
+    add_to_index(obj.__tablename__, obj)
+  File "C:\Users\Миша\PycharmProjects\VIT 2.0\app\search.py", line 10, in add_to_index
+    current_app.elasticsearch.index(index=index, doc_type=index, id=model.id,
+  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\elasticsearch\client\utils.py", line 301, in _wrapped
+    return func(*args, params=params, headers=headers, **kwargs)
+  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\elasticsearch\client\__init__.py", line 405, in index
+    return self.transport.perform_request(
+  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\elasticsearch\transport.py", line 409, in perform_request
+    self._do_verify_elasticsearch(headers=headers, timeout=timeout)
+  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\elasticsearch\transport.py", line 598, in _do_verify_elasticsearch
+    raise error
+  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\elasticsearch\transport.py", line 561, in _do_verify_elasticsearch
+    _, info_headers, info_response = conn.perform_request(
+  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\elasticsearch\connection\http_urllib3.py", line 276, in perform_request
+    raise ConnectionError("N/A", str(e), e)
+elasticsearch.exceptions.ConnectionError: ConnectionError(<urllib3.connection.HTTPConnection object at 0x000001C467A2DD60>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение) caused by: NewConnectionError(<urllib3.connection.HTTPConnection object at 0x000001C467A2DD60>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение)
