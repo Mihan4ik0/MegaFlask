@@ -1,4 +1,43 @@
-2021-12-07 16:02:56,577 ERROR: Exception on /index [GET] [in C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask\app.py:1457]
+2021-12-07 15:42:23,708 ERROR: Exception on /auth/login [GET] [in C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask\app.py:1457]
+Traceback (most recent call last):
+  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask\app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask\app.py", line 1518, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask\app.py", line 1516, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask\app.py", line 1502, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "C:\Users\Миша\PycharmProjects\VIT 2.0\app\auth\routes.py", line 27, in login
+    return render_template('auth/login.html', title='Sign In', form=form)
+  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask\templating.py", line 147, in render_template
+    return _render(
+  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask\templating.py", line 128, in _render
+    rv = template.render(context)
+  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\jinja2\environment.py", line 1291, in render
+    self.environment.handle_exception()
+  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\jinja2\environment.py", line 925, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\Миша\PycharmProjects\VIT 2.0\app\templates\auth\login.html", line 2, in top-level template code
+    {% import 'bootstrap/wtf.html' as wtf %}
+  File "C:\Users\Миша\PycharmProjects\VIT 2.0\app\templates\base.html", line 1, in top-level template code
+    {% extends 'bootstrap/base.html' %}
+  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 1, in top-level template code
+    {% block doc -%}
+  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 4, in block 'doc'
+    {%- block html %}
+  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 20, in block 'html'
+    {% block body -%}
+  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 23, in block 'body'
+    {% block content -%}
+  File "C:\Users\Миша\PycharmProjects\VIT 2.0\app\templates\base.html", line 48, in block 'content'
+    {% block app_content %}{% endblock %}
+  File "C:\Users\Миша\PycharmProjects\VIT 2.0\app\templates\auth\login.html", line 12, in block 'app_content'
+    <p>Новый пользователь? <a href="{{ auth.url_for('register') }}">Кликни для регистрации!</a></p>
+  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\jinja2\environment.py", line 474, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'auth' is undefined
+2021-12-07 15:43:03,219 ERROR: Exception on /index [GET] [in C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask\app.py:1457]
 Traceback (most recent call last):
   File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask\app.py", line 2073, in wsgi_app
     response = self.full_dispatch_request()
@@ -23,8 +62,7 @@ Traceback (most recent call last):
   File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\werkzeug\routing.py", line 2314, in build
     raise BuildError(endpoint, values, method, self)
 werkzeug.routing.BuildError: Could not build url for endpoint 'login'. Did you mean 'auth.login' instead?
-2021-12-07 16:08:02,457 INFO: Microblog startup [in C:\Users\Миша\PycharmProjects\VIT 2.0\app\__init__.py:70]
-2021-12-07 16:08:18,604 ERROR: Exception on / [GET] [in C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask\app.py:1457]
+2021-12-07 15:43:06,741 ERROR: Exception on /index [GET] [in C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask\app.py:1457]
 Traceback (most recent call last):
   File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask\app.py", line 2073, in wsgi_app
     response = self.full_dispatch_request()
@@ -49,58 +87,3 @@ Traceback (most recent call last):
   File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\werkzeug\routing.py", line 2314, in build
     raise BuildError(endpoint, values, method, self)
 werkzeug.routing.BuildError: Could not build url for endpoint 'login'. Did you mean 'auth.login' instead?
-2021-12-07 16:08:22,591 ERROR: Exception on /explore [GET] [in C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask\app.py:1457]
-Traceback (most recent call last):
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask\app.py", line 2073, in wsgi_app
-    response = self.full_dispatch_request()
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask\app.py", line 1518, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask\app.py", line 1516, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask\app.py", line 1502, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask_login\utils.py", line 271, in decorated_view
-    return current_app.login_manager.unauthorized()
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask_login\login_manager.py", line 174, in unauthorized
-    redirect_url = make_login_url(login_view, next_url=request.url)
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask_login\utils.py", line 120, in login_url
-    base = expand_login_view(login_view)
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask_login\utils.py", line 97, in expand_login_view
-    return url_for(login_view)
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask\helpers.py", line 338, in url_for
-    return appctx.app.handle_url_build_error(error, endpoint, values)
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask\helpers.py", line 325, in url_for
-    rv = url_adapter.build(
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\werkzeug\routing.py", line 2314, in build
-    raise BuildError(endpoint, values, method, self)
-werkzeug.routing.BuildError: Could not build url for endpoint 'login'. Did you mean 'auth.login' instead?
-2021-12-07 16:08:29,681 ERROR: Exception on /index [GET] [in C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask\app.py:1457]
-Traceback (most recent call last):
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask\app.py", line 2073, in wsgi_app
-    response = self.full_dispatch_request()
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask\app.py", line 1518, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask\app.py", line 1516, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask\app.py", line 1502, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
-    return func(*args, **kwargs)
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\app\main\routes.py", line 22, in index
-    posts = current_user.followed_posts().paginate(page, app.config['POSTS_PER_PAGE'], False)  # отображение постов только от отслеживаемых
-NameError: name 'app' is not defined
-2021-12-07 16:08:32,899 ERROR: Exception on /index [GET] [in C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask\app.py:1457]
-Traceback (most recent call last):
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask\app.py", line 2073, in wsgi_app
-    response = self.full_dispatch_request()
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask\app.py", line 1518, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask\app.py", line 1516, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask\app.py", line 1502, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
-    return func(*args, **kwargs)
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\app\main\routes.py", line 22, in index
-    posts = current_user.followed_posts().paginate(page, app.config['POSTS_PER_PAGE'], False)  # отображение постов только от отслеживаемых
-NameError: name 'app' is not defined

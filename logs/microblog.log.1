@@ -1,4 +1,4 @@
-2021-12-03 22:40:21,120 ERROR: Exception on / [GET] [in C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask\app.py:1457]
+2021-12-07 16:18:31,493 ERROR: Exception on /index [GET] [in C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask\app.py:1457]
 Traceback (most recent call last):
   File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask\app.py", line 2073, in wsgi_app
     response = self.full_dispatch_request()
@@ -8,29 +8,22 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask\app.py", line 1502, in dispatch_request
     return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
-    return func(*args, **kwargs)
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\app\routes.py", line 28, in index
-    return render_template('index.html', title='Home Page', form=form, posts=posts.items, next_url=next_url, prev_url=prev_url)
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask\templating.py", line 147, in render_template
-    return _render(
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask\templating.py", line 128, in _render
-    rv = template.render(context)
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\jinja2\environment.py", line 1291, in render
-    self.environment.handle_exception()
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\jinja2\environment.py", line 925, in handle_exception
-    raise rewrite_traceback_stack(source=source)
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\app\templates\index.html", line 1, in top-level template code
-    {% extends "base.html" %}
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\jinja2\environment.py", line 925, in handle_exception
-    raise rewrite_traceback_stack(source=source)
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\app\templates\base.html", line 32, in template
-    {% endblock $}
-jinja2.exceptions.TemplateSyntaxError: unexpected char '$' at 1265
-2021-12-03 22:44:09,692 INFO: Microblog startup [in C:\Users\Миша\PycharmProjects\VIT 2.0\app\__init__.py:47]
-2021-12-03 22:44:43,276 INFO: Microblog startup [in C:\Users\Миша\PycharmProjects\VIT 2.0\app\__init__.py:47]
-2021-12-03 22:47:06,270 INFO: Microblog startup [in C:\Users\Миша\PycharmProjects\VIT 2.0\app\__init__.py:47]
-2021-12-03 22:48:25,669 ERROR: Exception on /reset_password_request [GET] [in C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask\app.py:1457]
+  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask_login\utils.py", line 271, in decorated_view
+    return current_app.login_manager.unauthorized()
+  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask_login\login_manager.py", line 174, in unauthorized
+    redirect_url = make_login_url(login_view, next_url=request.url)
+  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask_login\utils.py", line 120, in login_url
+    base = expand_login_view(login_view)
+  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask_login\utils.py", line 97, in expand_login_view
+    return url_for(login_view)
+  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask\helpers.py", line 338, in url_for
+    return appctx.app.handle_url_build_error(error, endpoint, values)
+  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask\helpers.py", line 325, in url_for
+    rv = url_adapter.build(
+  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\werkzeug\routing.py", line 2314, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.BuildError: Could not build url for endpoint 'login'. Did you mean 'auth.login' instead?
+2021-12-07 16:18:49,449 ERROR: Exception on /explore [GET] [in C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask\app.py:1457]
 Traceback (most recent call last):
   File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask\app.py", line 2073, in wsgi_app
     response = self.full_dispatch_request()
@@ -40,27 +33,23 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask\app.py", line 1502, in dispatch_request
     return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\app\routes.py", line 163, in reset_password_request
-    return render_template('reset_password_request.html', title='Reset Password', form=form)
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask\templating.py", line 148, in render_template
-    ctx.app.jinja_env.get_or_select_template(template_name_or_list),
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\jinja2\environment.py", line 1068, in get_or_select_template
-    return self.get_template(template_name_or_list, parent, globals)
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\jinja2\environment.py", line 997, in get_template
-    return self._load_template(name, globals)
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\jinja2\environment.py", line 958, in _load_template
-    template = self.loader.load(self, name, self.make_globals(globals))
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\jinja2\loaders.py", line 137, in load
-    code = environment.compile(source, name, filename)
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\jinja2\environment.py", line 757, in compile
-    self.handle_exception(source=source_hint)
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\jinja2\environment.py", line 925, in handle_exception
-    raise rewrite_traceback_stack(source=source)
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\app\templates\reset_password_request.html", line 2, in template
-    {% import 'bootstrap/wtf.html' %}
-jinja2.exceptions.TemplateSyntaxError: expected token 'as', got 'end of statement block'
-2021-12-07 13:54:16,789 INFO: Microblog startup [in C:\Users\Миша\PycharmProjects\VIT 2.0\app\__init__.py:49]
-2021-12-07 13:54:25,607 ERROR: Exception on /login [GET] [in C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask\app.py:1457]
+  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask_login\utils.py", line 271, in decorated_view
+    return current_app.login_manager.unauthorized()
+  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask_login\login_manager.py", line 174, in unauthorized
+    redirect_url = make_login_url(login_view, next_url=request.url)
+  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask_login\utils.py", line 120, in login_url
+    base = expand_login_view(login_view)
+  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask_login\utils.py", line 97, in expand_login_view
+    return url_for(login_view)
+  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask\helpers.py", line 338, in url_for
+    return appctx.app.handle_url_build_error(error, endpoint, values)
+  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask\helpers.py", line 325, in url_for
+    rv = url_adapter.build(
+  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\werkzeug\routing.py", line 2314, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.BuildError: Could not build url for endpoint 'login'. Did you mean 'auth.login' instead?
+2021-12-07 16:37:18,934 INFO: Microblog startup [in C:\Users\Миша\PycharmProjects\VIT 2.0\app\__init__.py:70]
+2021-12-07 16:37:21,012 ERROR: Exception on / [GET] [in C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask\app.py:1457]
 Traceback (most recent call last):
   File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask\app.py", line 2073, in wsgi_app
     response = self.full_dispatch_request()
@@ -70,30 +59,44 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask\app.py", line 1502, in dispatch_request
     return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\app\routes.py", line 46, in login
-    return render_template('login.html', title='Sign In', form=form)
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask\templating.py", line 147, in render_template
-    return _render(
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask\templating.py", line 128, in _render
-    rv = template.render(context)
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\jinja2\environment.py", line 1291, in render
-    self.environment.handle_exception()
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\jinja2\environment.py", line 925, in handle_exception
-    raise rewrite_traceback_stack(source=source)
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\app\templates\login.html", line 2, in top-level template code
-    {% import 'bootstrap/wtf.html' as wtf %}
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\app\templates\base.html", line 1, in top-level template code
-    {% extends 'bootstrap/base.html' %}
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 1, in top-level template code
-    {% block doc -%}
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 4, in block 'doc'
-    {%- block html %}
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 20, in block 'html'
-    {% block body -%}
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 26, in block 'body'
-    {% block scripts %}
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\app\templates\base.html", line 54, in block 'scripts'
-    {{ moment.include() }}
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\jinja2\utils.py", line 84, in from_obj
-    if hasattr(obj, "jinja_pass_arg"):
-jinja2.exceptions.UndefinedError: 'type object' has no attribute 'include'
+  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask_login\utils.py", line 271, in decorated_view
+    return current_app.login_manager.unauthorized()
+  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask_login\login_manager.py", line 174, in unauthorized
+    redirect_url = make_login_url(login_view, next_url=request.url)
+  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask_login\utils.py", line 120, in login_url
+    base = expand_login_view(login_view)
+  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask_login\utils.py", line 97, in expand_login_view
+    return url_for(login_view)
+  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask\helpers.py", line 338, in url_for
+    return appctx.app.handle_url_build_error(error, endpoint, values)
+  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask\helpers.py", line 325, in url_for
+    rv = url_adapter.build(
+  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\werkzeug\routing.py", line 2314, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.BuildError: Could not build url for endpoint 'login'. Did you mean 'auth.login' instead?
+2021-12-07 16:39:40,171 ERROR: Exception on /user/Mihan [GET] [in C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask\app.py:1457]
+Traceback (most recent call last):
+  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask\app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask\app.py", line 1518, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask\app.py", line 1516, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask\app.py", line 1502, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask_login\utils.py", line 271, in decorated_view
+    return current_app.login_manager.unauthorized()
+  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask_login\login_manager.py", line 174, in unauthorized
+    redirect_url = make_login_url(login_view, next_url=request.url)
+  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask_login\utils.py", line 120, in login_url
+    base = expand_login_view(login_view)
+  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask_login\utils.py", line 97, in expand_login_view
+    return url_for(login_view)
+  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask\helpers.py", line 338, in url_for
+    return appctx.app.handle_url_build_error(error, endpoint, values)
+  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask\helpers.py", line 325, in url_for
+    rv = url_adapter.build(
+  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\werkzeug\routing.py", line 2314, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.BuildError: Could not build url for endpoint 'login'. Did you mean 'auth.login' instead?
+2021-12-07 16:41:03,850 INFO: Microblog startup [in C:\Users\Миша\PycharmProjects\VIT 2.0\app\__init__.py:70]
