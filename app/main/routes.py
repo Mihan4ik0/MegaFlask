@@ -1,6 +1,6 @@
 from app import db
 from flask import render_template, flash, redirect, url_for, request, current_app
-from app.main.forms import EditProfileForm, PostForm, EmptyForm
+from app.main.forms import EditProfileForm, PostForm, EmptyForm, EditPostForm
 from app.models import User, Post
 from flask_login import current_user, login_required
 from datetime import datetime
@@ -109,3 +109,36 @@ def explore():  # логика страницы с постами от всех 
     prev_url = url_for('main.explore', page=posts.prev_num) \
         if posts.has_prev else None
     return render_template('index.html', title='Explore', posts=posts.items, next_url=next_url, prev_url=prev_url)
+
+
+@bp.route('/post/<id>')
+@login_required
+def post(id):
+    post = Post.query.filter_by(id=id).first_or_404()  # загрузка пользователя\выдача ошибки 404
+    return render_template('post.html', post=post, id=id)
+
+
+@bp.route('/edit_post/<id>', methods=['GET', 'POST'])
+@login_required
+def edit_post(id):
+    form = EditPostForm()
+    post = Post.query.filter_by(id=id).first()
+    if form.validate_on_submit():
+        post.body = form.post.data
+        db.session.commit()
+        flash('Your changes have been saved.')
+        return redirect(url_for('main.explore'))
+    elif request.method == 'GET':
+        form.post.data = post
+    return render_template('edit_post.html', title='Edit Post',
+                           form=form)
+
+
+@bp.route('/delete_post/<id>', methods=['GET', 'POST'])
+@login_required
+def delete_post(id):
+    post = Post.query.filter_by(id=id).first()
+    db.session.delete(post)
+    db.session.commit()
+    flash('Your changes have been saved.')
+    return redirect(url_for('main.explore'))

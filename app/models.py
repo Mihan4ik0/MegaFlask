@@ -83,7 +83,7 @@ class Post(db.Model):  # таблица постов в БД
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
     def __repr__(self):
-        return '<Пост {}>'.format(self.body)
+        return '{}'.format(self.body)
 
 
 @login.user_loader  # регистрирование пользовательского загрузчика

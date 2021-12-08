@@ -28,3 +28,8 @@ class PostForm(FlaskForm):  # форма для ввода нового сооб
 
 class EmptyForm(FlaskForm):
     submit = SubmitField('Submit')
+
+
+class EditPostForm(FlaskForm):  # форма редактирования постов
+    post = TextAreaField('Напишите что-нибудь', validators=[DataRequired(), Length(min=1, max=140)])
+    submit = SubmitField('Опубликовать')

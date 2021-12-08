@@ -1,4 +1,11 @@
-2021-12-07 15:36:02,635 ERROR: Exception on / [GET] [in C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask\app.py:1457]
+2021-12-09 00:44:16,972 ERROR: Exception on /edit_post/4 [POST] [in C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask\app.py:1457]
+Traceback (most recent call last):
+  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\sqlalchemy\orm\session.py", line 2596, in add
+    state = attributes.instance_state(instance)
+AttributeError: 'str' object has no attribute '_sa_instance_state'
+
+The above exception was the direct cause of the following exception:
+
 Traceback (most recent call last):
   File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask\app.py", line 2073, in wsgi_app
     response = self.full_dispatch_request()
@@ -8,23 +15,18 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask\app.py", line 1502, in dispatch_request
     return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask_login\utils.py", line 271, in decorated_view
-    return current_app.login_manager.unauthorized()
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask_login\login_manager.py", line 174, in unauthorized
-    redirect_url = make_login_url(login_view, next_url=request.url)
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask_login\utils.py", line 120, in login_url
-    base = expand_login_view(login_view)
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask_login\utils.py", line 97, in expand_login_view
-    return url_for(login_view)
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask\helpers.py", line 338, in url_for
-    return appctx.app.handle_url_build_error(error, endpoint, values)
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask\helpers.py", line 325, in url_for
-    rv = url_adapter.build(
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\werkzeug\routing.py", line 2314, in build
-    raise BuildError(endpoint, values, method, self)
-werkzeug.routing.BuildError: Could not build url for endpoint 'login'. Did you mean 'auth.login' instead?
-2021-12-07 15:41:59,832 INFO: Microblog startup [in C:\Users\Миша\PycharmProjects\VIT 2.0\app\__init__.py:70]
-2021-12-07 15:42:09,351 ERROR: Exception on / [GET] [in C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask\app.py:1457]
+  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Users\Миша\PycharmProjects\VIT 2.0\app\main\routes.py", line 128, in edit_post
+    db.session.add(body)
+  File "<string>", line 2, in add
+  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\sqlalchemy\orm\session.py", line 2598, in add
+    util.raise_(
+  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\sqlalchemy\util\compat.py", line 207, in raise_
+    raise exception
+sqlalchemy.orm.exc.UnmappedInstanceError: Class 'builtins.str' is not mapped
+2021-12-09 00:45:19,810 INFO: Microblog startup [in C:\Users\Миша\PycharmProjects\VIT 2.0\app\__init__.py:70]
+2021-12-09 00:45:28,494 ERROR: Exception on /edit_post/4 [GET] [in C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask\app.py:1457]
 Traceback (most recent call last):
   File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask\app.py", line 2073, in wsgi_app
     response = self.full_dispatch_request()
@@ -34,22 +36,28 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask\app.py", line 1502, in dispatch_request
     return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask_login\utils.py", line 271, in decorated_view
-    return current_app.login_manager.unauthorized()
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask_login\login_manager.py", line 174, in unauthorized
-    redirect_url = make_login_url(login_view, next_url=request.url)
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask_login\utils.py", line 120, in login_url
-    base = expand_login_view(login_view)
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask_login\utils.py", line 97, in expand_login_view
-    return url_for(login_view)
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask\helpers.py", line 338, in url_for
-    return appctx.app.handle_url_build_error(error, endpoint, values)
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask\helpers.py", line 325, in url_for
-    rv = url_adapter.build(
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\werkzeug\routing.py", line 2314, in build
-    raise BuildError(endpoint, values, method, self)
-werkzeug.routing.BuildError: Could not build url for endpoint 'login'. Did you mean 'auth.login' instead?
-2021-12-07 15:42:14,579 ERROR: Exception on /index [GET] [in C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask\app.py:1457]
+  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Users\Миша\PycharmProjects\VIT 2.0\app\main\routes.py", line 132, in edit_post
+    form.body.data = post
+AttributeError: 'EditPostForm' object has no attribute 'body'
+2021-12-09 00:45:40,086 INFO: Microblog startup [in C:\Users\Миша\PycharmProjects\VIT 2.0\app\__init__.py:70]
+2021-12-09 01:06:39,252 INFO: Microblog startup [in C:\Users\Миша\PycharmProjects\VIT 2.0\app\__init__.py:70]
+2021-12-09 01:07:05,757 INFO: Microblog startup [in C:\Users\Миша\PycharmProjects\VIT 2.0\app\__init__.py:70]
+2021-12-09 01:07:27,809 INFO: Microblog startup [in C:\Users\Миша\PycharmProjects\VIT 2.0\app\__init__.py:70]
+2021-12-09 01:12:51,510 INFO: Microblog startup [in C:\Users\Миша\PycharmProjects\VIT 2.0\app\__init__.py:70]
+2021-12-09 01:13:29,683 INFO: Microblog startup [in C:\Users\Миша\PycharmProjects\VIT 2.0\app\__init__.py:70]
+2021-12-09 01:14:29,785 INFO: Microblog startup [in C:\Users\Миша\PycharmProjects\VIT 2.0\app\__init__.py:70]
+2021-12-09 01:14:40,796 ERROR: Exception on /edit_post/8 [POST] [in C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask\app.py:1457]
+Traceback (most recent call last):
+  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1802, in _execute_context
+    self.dialect.do_execute(
+  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\sqlalchemy\engine\default.py", line 719, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.IntegrityError: UNIQUE constraint failed: post.id
+
+The above exception was the direct cause of the following exception:
+
 Traceback (most recent call last):
   File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask\app.py", line 2073, in wsgi_app
     response = self.full_dispatch_request()
@@ -59,43 +67,53 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask\app.py", line 1502, in dispatch_request
     return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask_login\utils.py", line 271, in decorated_view
-    return current_app.login_manager.unauthorized()
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask_login\login_manager.py", line 174, in unauthorized
-    redirect_url = make_login_url(login_view, next_url=request.url)
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask_login\utils.py", line 120, in login_url
-    base = expand_login_view(login_view)
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask_login\utils.py", line 97, in expand_login_view
-    return url_for(login_view)
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask\helpers.py", line 338, in url_for
-    return appctx.app.handle_url_build_error(error, endpoint, values)
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask\helpers.py", line 325, in url_for
-    rv = url_adapter.build(
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\werkzeug\routing.py", line 2314, in build
-    raise BuildError(endpoint, values, method, self)
-werkzeug.routing.BuildError: Could not build url for endpoint 'login'. Did you mean 'auth.login' instead?
-2021-12-07 15:42:20,667 ERROR: Exception on /index [GET] [in C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask\app.py:1457]
-Traceback (most recent call last):
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask\app.py", line 2073, in wsgi_app
-    response = self.full_dispatch_request()
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask\app.py", line 1518, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask\app.py", line 1516, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask\app.py", line 1502, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask_login\utils.py", line 271, in decorated_view
-    return current_app.login_manager.unauthorized()
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask_login\login_manager.py", line 174, in unauthorized
-    redirect_url = make_login_url(login_view, next_url=request.url)
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask_login\utils.py", line 120, in login_url
-    base = expand_login_view(login_view)
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask_login\utils.py", line 97, in expand_login_view
-    return url_for(login_view)
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask\helpers.py", line 338, in url_for
-    return appctx.app.handle_url_build_error(error, endpoint, values)
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask\helpers.py", line 325, in url_for
-    rv = url_adapter.build(
-  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\werkzeug\routing.py", line 2314, in build
-    raise BuildError(endpoint, values, method, self)
-werkzeug.routing.BuildError: Could not build url for endpoint 'login'. Did you mean 'auth.login' instead?
+  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Users\Миша\PycharmProjects\VIT 2.0\app\main\routes.py", line 128, in edit_post
+    db.session.commit()
+  File "<string>", line 2, in commit
+  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\sqlalchemy\orm\session.py", line 1428, in commit
+    self._transaction.commit(_to_root=self.future)
+  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\sqlalchemy\orm\session.py", line 829, in commit
+    self._prepare_impl()
+  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\sqlalchemy\orm\session.py", line 808, in _prepare_impl
+    self.session.flush()
+  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\sqlalchemy\orm\session.py", line 3345, in flush
+    self._flush(objects)
+  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\sqlalchemy\orm\session.py", line 3485, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\sqlalchemy\util\langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\sqlalchemy\util\compat.py", line 207, in raise_
+    raise exception
+  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\sqlalchemy\orm\session.py", line 3445, in _flush
+    flush_context.execute()
+  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\sqlalchemy\orm\unitofwork.py", line 456, in execute
+    rec.execute(self)
+  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\sqlalchemy\orm\unitofwork.py", line 630, in execute
+    util.preloaded.orm_persistence.save_obj(
+  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\sqlalchemy\orm\persistence.py", line 244, in save_obj
+    _emit_insert_statements(
+  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\sqlalchemy\orm\persistence.py", line 1096, in _emit_insert_statements
+    c = connection._execute_20(
+  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1614, in _execute_20
+    return meth(self, args_10style, kwargs_10style, execution_options)
+  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\sqlalchemy\sql\elements.py", line 325, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1481, in _execute_clauseelement
+    ret = self._execute_context(
+  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1845, in _execute_context
+    self._handle_dbapi_exception(
+  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\sqlalchemy\engine\base.py", line 2026, in _handle_dbapi_exception
+    util.raise_(
+  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\sqlalchemy\util\compat.py", line 207, in raise_
+    raise exception
+  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1802, in _execute_context
+    self.dialect.do_execute(
+  File "C:\Users\Миша\PycharmProjects\VIT 2.0\venv\lib\site-packages\sqlalchemy\engine\default.py", line 719, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.IntegrityError: (sqlite3.IntegrityError) UNIQUE constraint failed: post.id
+[SQL: INSERT INTO post (id, body, timestamp, user_id) VALUES (?, ?, ?, ?)]
+[parameters: ('8', 'Yeah, I win', '2021-12-08 22:14:40.795576', 2)]
+(Background on this error at: https://sqlalche.me/e/14/gkpj)
+2021-12-09 01:16:33,989 INFO: Microblog startup [in C:\Users\Миша\PycharmProjects\VIT 2.0\app\__init__.py:70]
