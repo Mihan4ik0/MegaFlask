@@ -33,3 +33,76 @@ TypeError: remove() takes 1 positional argument but 2 were given
 2021-12-09 01:31:44,714 INFO: Microblog startup [in C:\Users\Миша\PycharmProjects\VIT 2.0\app\__init__.py:70]
 2021-12-09 01:32:36,617 INFO: Microblog startup [in C:\Users\Миша\PycharmProjects\VIT 2.0\app\__init__.py:70]
 2021-12-09 01:35:02,898 INFO: Microblog startup [in C:\Users\Миша\PycharmProjects\VIT 2.0\app\__init__.py:70]
+2021-12-09 15:01:09,125 INFO: Microblog startup [in C:\Users\Миша\PycharmProjects\MegaFlask\app\__init__.py:70]
+2021-12-09 15:01:22,228 ERROR: Exception on /user/Mehanik [GET] [in C:\Users\Миша\PycharmProjects\MegaFlask\venv\lib\site-packages\flask\app.py:1457]
+Traceback (most recent call last):
+  File "C:\Users\Миша\PycharmProjects\MegaFlask\venv\lib\site-packages\flask\app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\Миша\PycharmProjects\MegaFlask\venv\lib\site-packages\flask\app.py", line 1518, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\Миша\PycharmProjects\MegaFlask\venv\lib\site-packages\flask\app.py", line 1516, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\Миша\PycharmProjects\MegaFlask\venv\lib\site-packages\flask\app.py", line 1502, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "C:\Users\Миша\PycharmProjects\MegaFlask\venv\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Users\Миша\PycharmProjects\MegaFlask\app\main\routes.py", line 43, in user
+    return render_template('user.html', user=user, posts=posts.items,
+  File "C:\Users\Миша\PycharmProjects\MegaFlask\venv\lib\site-packages\flask\templating.py", line 147, in render_template
+    return _render(
+  File "C:\Users\Миша\PycharmProjects\MegaFlask\venv\lib\site-packages\flask\templating.py", line 128, in _render
+    rv = template.render(context)
+  File "C:\Users\Миша\PycharmProjects\MegaFlask\venv\lib\site-packages\jinja2\environment.py", line 1291, in render
+    self.environment.handle_exception()
+  File "C:\Users\Миша\PycharmProjects\MegaFlask\venv\lib\site-packages\jinja2\environment.py", line 925, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\Миша\PycharmProjects\MegaFlask\app\templates\user.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\Миша\PycharmProjects\MegaFlask\app\templates\base.html", line 1, in top-level template code
+    {% extends 'bootstrap/base.html' %}
+  File "C:\Users\Миша\PycharmProjects\MegaFlask\venv\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 1, in top-level template code
+    {% block doc -%}
+  File "C:\Users\Миша\PycharmProjects\MegaFlask\venv\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 4, in block 'doc'
+    {%- block html %}
+  File "C:\Users\Миша\PycharmProjects\MegaFlask\venv\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 20, in block 'html'
+    {% block body -%}
+  File "C:\Users\Миша\PycharmProjects\MegaFlask\venv\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 23, in block 'body'
+    {% block content -%}
+  File "C:\Users\Миша\PycharmProjects\MegaFlask\app\templates\base.html", line 48, in block 'content'
+    {% block app_content %}{% endblock %}
+  File "C:\Users\Миша\PycharmProjects\MegaFlask\app\templates\user.html", line 24, in block 'app_content'
+    {{ form.hidden_tag() }}
+  File "C:\Users\Миша\PycharmProjects\MegaFlask\venv\lib\site-packages\jinja2\environment.py", line 474, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'form' is undefined
+2021-12-09 15:06:45,987 INFO: Microblog startup [in C:\Users\Миша\PycharmProjects\MegaFlask\app\__init__.py:70]
+2021-12-09 15:07:36,744 INFO: Microblog startup [in C:\Users\Миша\PycharmProjects\MegaFlask\app\__init__.py:70]
+2021-12-09 15:07:39,562 INFO: Microblog startup [in C:\Users\Миша\PycharmProjects\MegaFlask\app\__init__.py:70]
+2021-12-09 15:10:24,153 INFO: Microblog startup [in C:\Users\Миша\PycharmProjects\MegaFlask\app\__init__.py:70]
+2021-12-09 15:19:20,058 INFO: Microblog startup [in C:\Users\Миша\PycharmProjects\MegaFlask\app\__init__.py:70]
+2021-12-09 15:19:26,416 ERROR: Exception on /unfollow/Mehanik [POST] [in C:\Users\Миша\PycharmProjects\MegaFlask\venv\lib\site-packages\flask\app.py:1457]
+Traceback (most recent call last):
+  File "C:\Users\Миша\PycharmProjects\MegaFlask\venv\lib\site-packages\flask\app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\Миша\PycharmProjects\MegaFlask\venv\lib\site-packages\flask\app.py", line 1518, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\Миша\PycharmProjects\MegaFlask\venv\lib\site-packages\flask\app.py", line 1516, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\Миша\PycharmProjects\MegaFlask\venv\lib\site-packages\flask\app.py", line 1502, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "C:\Users\Миша\PycharmProjects\MegaFlask\venv\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Users\Миша\PycharmProjects\MegaFlask\app\main\routes.py", line 105, in unfollow
+    return redirect(url_for('user', username=username))
+  File "C:\Users\Миша\PycharmProjects\MegaFlask\venv\lib\site-packages\flask\helpers.py", line 338, in url_for
+    return appctx.app.handle_url_build_error(error, endpoint, values)
+  File "C:\Users\Миша\PycharmProjects\MegaFlask\venv\lib\site-packages\flask\helpers.py", line 325, in url_for
+    rv = url_adapter.build(
+  File "C:\Users\Миша\PycharmProjects\MegaFlask\venv\lib\site-packages\werkzeug\routing.py", line 2314, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.BuildError: Could not build url for endpoint 'user' with values ['username']. Did you mean 'main.user' instead?
+2021-12-09 15:20:31,884 INFO: Microblog startup [in C:\Users\Миша\PycharmProjects\MegaFlask\app\__init__.py:70]
+2021-12-09 15:22:12,575 INFO: Microblog startup [in C:\Users\Миша\PycharmProjects\MegaFlask\app\__init__.py:70]
+2021-12-09 16:24:35,435 INFO: Microblog startup [in C:\Users\Миша\PycharmProjects\MegaFlask\app\__init__.py:70]
+2021-12-09 16:25:27,919 INFO: Microblog startup [in C:\Users\Миша\PycharmProjects\MegaFlask\app\__init__.py:70]
+2021-12-09 21:59:50,295 INFO: Microblog startup [in C:\Users\Миша\PycharmProjects\MegaFlask\app\__init__.py:70]

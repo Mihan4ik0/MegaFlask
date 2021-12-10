@@ -26,7 +26,7 @@ class PostForm(FlaskForm):  # форма для ввода нового сооб
     submit = SubmitField('Опубликовать')
 
 
-class EmptyForm(FlaskForm):
+class EmptyForm(FlaskForm):  # пустая форма
     submit = SubmitField('Submit')
 
 

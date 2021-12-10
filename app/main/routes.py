@@ -16,7 +16,7 @@ def index():  # логика главной страницы
         post = Post(body=form.post.data, author=current_user)
         db.session.add(post)
         db.session.commit()
-        flash('Your post is now live')
+        flash('Ваш пост опубликован')
         return redirect(url_for('main.index'))
     page = request.args.get('page', 1, type=int)  # нумерация страниц
     posts = current_user.followed_posts().paginate(page, current_app.config['POSTS_PER_PAGE'],
@@ -40,8 +40,9 @@ def user(username):  # логика страницы пользователя
         if posts.has_next else None
     prev_url = url_for('main.user', username=user.username, page=posts.prev_num) \
         if posts.has_prev else None
+    form = EmptyForm()
     return render_template('user.html', user=user, posts=posts.items,
-                           next_url=next_url, prev_url=prev_url)
+                           next_url=next_url, prev_url=prev_url, form=form)
 
 
 @bp.before_request  # последняя активность пользователя
@@ -66,36 +67,44 @@ def edit_profile():  # логика страницы изменения проф
     return render_template('edit_profile.html', title='Edit Profile', form=form)
 
 
-@bp.route('/follow/<username>')
+@bp.route('/follow/<username>', methods=['POST'])
 @login_required
 def follow(username):  # логика подписки
-    user = User.query.filter_by(username=username).first()
-    if user is None:
-        flash('User {} not found.'.format(username))
-        return redirect(url_for('main.index'))
-    if user == current_user:
-        flash('Вы не можете подписаться на самого себя!')
+    form = EmptyForm()
+    if form.validate_on_submit():
+        user = User.query.filter_by(username=username).first()
+        if user is None:
+            flash('Пользователь {} не найден .'.format(username))
+            return redirect(url_for('main.index'))
+        if user == current_user:
+            flash('Вы не можете подписаться на самого себя!')
+            return redirect(url_for('main.user', username=username))
+        current_user.follow(user)
+        db.session.commit()
+        flash('Вы подписались на  {}!'.format(username))
         return redirect(url_for('main.user', username=username))
-    current_user.follow(user)
-    db.session.commit()
-    flash('Вы подписались на  {}!'.format(username))
-    return redirect(url_for('main.user', username=username))
+    else:
+        return redirect(url_for('main.index'))
 
 
-@bp.route('/unfollow/<username>')
+@bp.route('/unfollow/<username>', methods=['POST'])
 @login_required
-def unfollow(username):  # логика отписки
-    user = User.query.filter_by(username=username).first()
-    if user is None:
-        flash('User {} not found.'.format(username))
-        return redirect(url_for('main.index'))
-    if user == current_user:
-        flash('Вы не можете отписаться от самого себя!')
+def unfollow(username):  # логика подписки
+    form = EmptyForm()
+    if form.validate_on_submit():
+        user = User.query.filter_by(username=username).first()
+        if user is None:
+            flash('Пользователь {} не найден.'.format(username))
+            return redirect(url_for('main.index'))
+        if user == current_user:
+            flash('Вы не можете отписаться от самого себя')
+            return redirect(url_for('main.user', username=username))
+        current_user.unfollow(user)
+        db.session.commit()
+        flash('Вы отписались от  {}.'.format(username))
         return redirect(url_for('main.user', username=username))
-    current_user.unfollow(user)
-    db.session.commit()
-    flash('Вы отписались от  {}.'.format(username))
-    return redirect(url_for('main.user', username=username))
+    else:
+        return redirect(url_for('main.index'))
 
 
 @bp.route('/explore')
@@ -113,20 +122,20 @@ def explore():  # логика страницы с постами от всех 
 
 @bp.route('/post/<id>')
 @login_required
-def post(id):
+def post(id):  # отображение поста
     post = Post.query.filter_by(id=id).first_or_404()  # загрузка пользователя\выдача ошибки 404
     return render_template('post.html', post=post, id=id)
 
 
 @bp.route('/edit_post/<id>', methods=['GET', 'POST'])
 @login_required
-def edit_post(id):
+def edit_post(id):  # редактирование постов
     form = EditPostForm()
     post = Post.query.filter_by(id=id).first()
     if form.validate_on_submit():
         post.body = form.post.data
         db.session.commit()
-        flash('Your changes have been saved.')
+        flash('Ваши изменения сохранены.')
         return redirect(url_for('main.explore'))
     elif request.method == 'GET':
         form.post.data = post
@@ -136,7 +145,7 @@ def edit_post(id):
 
 @bp.route('/delete_post/<id>', methods=['GET', 'POST'])
 @login_required
-def delete_post(id):
+def delete_post(id):  # удаление постов
     post = Post.query.filter_by(id=id).first()
     db.session.delete(post)
     db.session.commit()
